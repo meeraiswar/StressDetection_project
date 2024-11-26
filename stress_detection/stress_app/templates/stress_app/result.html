@@ -1,0 +1,76 @@
+<!-- stress_app/templates/stress_app/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .result {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .stressed {
+            color: red;
+            font-weight: bold;
+        }
+        .not-stressed {
+            color: green;
+            font-weight: bold;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stress Detection Result</h1>
+
+        <div class="result">
+            {% if user_data.is_stressed %}
+                <p class="stressed">You are Stressed!</p>
+            {% else %}
+                <p class="not-stressed">You are Not Stressed.</p>
+            {% endif %}
+        </div>
+
+        <a href="{% url 'data_input' %}">Enter New Data</a>
+    </div>
+</body>
+</html>

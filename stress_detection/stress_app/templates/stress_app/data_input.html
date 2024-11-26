@@ -1,0 +1,82 @@
+<!-- stress_app/templates/stress_app/data_input.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Stress Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure at least full height */
+            overflow: auto; /* Allow scrolling if needed */
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px; /* Allow a wider form container */
+            box-sizing: border-box;
+            margin: 20px; /* Add margin for small devices */
+            overflow: auto; /* Enable scrolling for the container */
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 20px; /* Provide space below heading */
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Adequate space between form elements */
+        }
+        input, select, button {
+            width: 100%;
+            padding: 12px; /* Increased padding for better readability */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px; /* Increase button text size for visibility */
+            padding: 14px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .csrf-token {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Stress Data</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
