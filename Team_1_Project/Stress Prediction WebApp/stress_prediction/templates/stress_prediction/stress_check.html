@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left">STRESSOGNOSTIC</div>
+        <div class="nav-center">
+            <a href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/help">HELP</a>
+            <a href="/contact">CONTACT</a>
+        </div>
+        <div class="nav-right">
+
+            {% if user.is_authenticated %}
+            <!-- <div class="login-message">
+                <h3>Your are Logged in ✅</h3>
+            </div> -->
+            <a href="/signout"> Sign Out</a>
+            {% else %}
+
+            <a href="/signup"> Sign Up</a>
+            {% endif %}
+
+            <a href="/login"> Log In </a>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Stress Detection Prediction</h2>
+        <form method="POST" action="{% url 'stress_check' %}"> Predict Stress
+            {% csrf_token %}
+
+            <label>Snoring Rate: [45 - 100]</label>
+            <input type="number" name="snoring_rate" step="any" required>
+
+            <label>Respiratory Rate: [15 - 35]</label>
+            <input type="number" name="respiratory_rate" step="any" required>
+
+            <label>Body Temperature(°F): [80 - 98]</label>
+            <input type="number" name="body_temperature" step="any" required>
+
+            <label>Limb Movement: [05 - 20]</label>
+            <input type="number" name="limb_movement" step="any" required>
+
+            <label>Blood Oxygen: [85 - 100]</label>
+            <input type="number" name="blood_oxygen" step="any" required>
+
+            <label>Eye Movement: [64 - 105]</label>
+            <input type="number" name="eye_movement" step="any" required>
+
+            <label>Sleep Hours: [0 - 10]</label>
+            <input type="number" name="sleep_hours" step="any" required>
+
+            <label>Heart Rate: [50 - 90]</label>
+            <input type="number" name="heart_rate" step="any" required>
+
+            <button type="submit">Predict Stress Level</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

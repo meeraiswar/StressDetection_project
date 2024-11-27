@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stressognostic</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">STRESSOGNOSTIC</div>
+        <div class="nav-center">
+            <a href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/help">HELP</a>
+            <a href="/contact">CONTACT</a>
+        </div>
+        <div class="nav-right">
+
+            {% if user.is_authenticated %}
+            <div class="login-message">
+                <h3>Your are Logged in ✅</h3>
+            </div>
+            <a  href="/signout"> Sign Out</a>
+            {% else %}
+
+            <a  href="/signup"> Sign Up</a>
+            {% endif %}
+            
+            <a  href="/login"> Log In </a>
+            
+        </div>
+    </nav>
+
+    
+<main>
+
+    <form class="signup-form" action="/signup" method="post">
+        {% csrf_token %}
+        <h2>Sign Up Dashboard</h2>
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create Your Username" required>
+        <br>
+
+        <label for="">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Your fullname" required>
+        <br>
+
+        <label for="">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create Your Password" required>
+        <br>
+
+        <label for="">Confirm Password</label>
+        <input type="password" id="Cpassword" name="Cpassword" placeholder="Confirm Your Password" required>
+        <br>
+
+        <button type="submit">Sign Up</button>
+
+    </form>
+</main>
+    
+
+</body>
+</html>

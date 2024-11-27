@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">STRESSOGNOSTIC</div>
+            <div class="nav-center">
+                <a href="/">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/help">HELP</a>
+                <a href="/contact">CONTACT</a>
+            </div>
+            <div class="nav-right">
+    
+                {% if user.is_authenticated %}
+                <!-- <div class="login-message">
+                    <h3>HI ! </h3>
+                </div> -->
+                <a href="/stress-check">CHECK AGAIN</a>
+                <a  href="/signout"> Sign Out</a>
+                {% else %}
+    
+                <a  href="/signup"> Sign Up</a>
+                {% endif %}
+                
+                <a  href="/login"> Log In </a>
+                
+            </div>
+        </nav>
+
+    </header>
+
+
+    <main>
+        <div class="result-dashboard">
+            <h1>RESULT DASHBOARD</h1>
+            <!-- <div class="{% if prediction == 'Stress' %}stressed{% else %}not-stressed{% endif %}">
+                <h2>{{ prediction }}</h2>
+            </div>
+            <div><h2>Stress Prediction: {{ prediction }}</h2></div> -->
+
+            <div class="result-header">
+                <h2>YOUR PREDICTION RESULT</h2>
+            </div>
+            
+            <div>{% if prediction %}
+                <div class="result-text {% if prediction == 'Stressed' %}stressed{% else %}not-stressed{% endif %}">
+                    <h3>{{ prediction }}</h3>
+                </div>{% endif %}
+            </div>
+
+            
+            <!-- <div class="personal-info">
+                <h3>PERSONAL INFORMATION</h3>
+                <p>Username: {{ username }}</p>
+                <p>Full Name: {{ name }}</p>
+                <p>Age: {{ age }}</p>
+                <p>Gender: {{ gender }}</p>
+                <p>Location: {{ location }}</p>
+            </div> -->
+
+            <section class="personal-info">
+                <h2>Personal Information</h2>
+                <div class="info-card">
+                  <div class="info-item">
+                    <span class="info-label">Username:</span>
+                    <span class="info-value">{{ username }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Full Name:</span>
+                    <span class="info-value">{{ name }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Age:</span>
+                    <span class="info-value">{{ age }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Gender:</span>
+                    <span class="info-value">{{ gender }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Location:</span>
+                    <span class="info-value">{{ location }}</span>
+                  </div>
+                </div>
+            </section>
+            <section class="suggestions">
+                <h2>Suggestions</h2>
+                <ul>
+                  <li>Practice deep breathing exercises to relax your mind.</li>
+                  <li>Engage in physical activities like walking or yoga daily.</li>
+                  <li>Maintain a healthy diet and ensure proper hydration.</li>
+                  <li>Take short breaks and avoid overburdening yourself.</li>
+                  <li>Stay connected with supportive family and friends.</li>
+                  <li>Consider journaling your thoughts to clear mental clutter.</li>
+                </ul>
+            </section>
+
+
+        </div>
+        
+    </main>
+</body>
+</html>
+
+
